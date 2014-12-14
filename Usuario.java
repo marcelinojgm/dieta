@@ -17,6 +17,9 @@ public class Usuario
 
     //numero de calorias ingeridas
     private float calorias;
+    
+    //guarda el alimento mas calorico por 100g consumido 
+    private Alimento alimentoCalorico;
    
 
     /**
@@ -33,6 +36,8 @@ public class Usuario
 
         //calorias antes de empezar a comer
         this.calorias = 0F;
+        
+        this.alimentoCalorico = null;
     }
 
     /**
@@ -91,14 +96,15 @@ public class Usuario
     /**
      * retorna el numero de calorias consumidas
      */
-    public float calorias()
+    public float getCalorias()
     {
         return this.calorias;
     }
+    
     /**
      * retorna el nombre del usuario
      */
-       public String nombre()
+       public String getNombre()
     {
         return this.nombre;
     }
@@ -110,11 +116,11 @@ public class Usuario
     {
         String compara;
         compara = "";
-        if(this.calorias > usuario.calorias())
+        if(this.calorias > usuario.getCalorias())
         {
             compara = "mas";
         }
-        else if (this.calorias < usuario.calorias())
+        else if (this.calorias < usuario.getCalorias())
         {
             compara = "menos";
         }
@@ -122,8 +128,38 @@ public class Usuario
         {
             compara = "las mismas";
         }
-        System.out.println(nombre() + " ha consumido " + compara + " calorias que " + usuario.nombre());
+        System.out.println(getNombre() + " ha consumido " + compara + " calorias que " + usuario.getNombre());
     }
+    
+    /**
+     * guarda el alimento mas calorico por 100g consumido hasta ahora
+     */
+    private void alimentoCalorico(Alimento alimento )
+    {
+        //si ya se a comido con anterioridad
+        if (this.alimentoCalorico != null)
+        {
+            if(this.alimentoCalorico.getCalorias100g() <= alimento.getCalorias100g())
+            {
+                this.alimentoCalorico = alimento;
+            }
+        }
+        //si todavia no ha comido nada
+        else
+        {
+            this.alimentoCalorico = alimento;
+        }
+    }
+    
+    /**
+     * imprime que alimmento ha sido el mas calorico por 100g hasta el momento
+     */
+    public void imprimeAliemntoCalorico()
+    {
+        System.out.print("Alimento más calórico ingerido por el usuario hasta el momento: " + this.alimentoCalorico.getNombre());
+    }
+    
+    
     
 
     

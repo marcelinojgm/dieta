@@ -39,7 +39,7 @@ public class Alimento
         System.out.println("Carbohidratos por cada 100 gramos: " + this.carbohidratos);
         System.out.println("Grasas por cada 100 gramos:        " + this.grasas);
         System.out.println("Calorias:                          " + getCalorias100g());
-        System.out.println("Componente/s mayoritario/s:        " + mayoritario());
+        System.out.println("Componente/s mayoritario/s:        " + getMayoritario());
 
     }
 
@@ -80,12 +80,20 @@ public class Alimento
     {
        return this.grasas;
     }
+    
+    /**
+     * retorna el nombre del aliemnto
+     */
+    public String getNombre()
+    {
+        return this.nombre;
+    }
 
     /**
      * retorna string con el/los macronutrientes mayotiario/s
      */
 
-    public String mayoritario()
+    public String getMayoritario()
     {
         String mayoritario; 
         mayoritario = "";
