@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Simula un usuario con su nombre y los datos de macronutrientes y calorias que ha ingerido
@@ -17,10 +18,12 @@ public class Usuario
 
     //numero de calorias ingeridas
     private float calorias;
-    
+
     //guarda el alimento mas calorico por 100g consumido 
     private Alimento alimentoCalorico;
-   
+
+    //coleccion de alimentos que se van ingeriendo
+    private ArrayList<Alimento> listaAlimentos;
 
     /**
      * Constructor for objects of class Usuario
@@ -36,7 +39,7 @@ public class Usuario
 
         //calorias antes de empezar a comer
         this.calorias = 0F;
-        
+
         this.alimentoCalorico = null;
     }
 
@@ -52,7 +55,10 @@ public class Usuario
 
         //calorias ingeridas
         this.calorias = this.calorias + (gramosAlimento * (alimento.getCalorias100g()/100));
-        
+        //agregado a la lista de alimentos consumidos
+        listaAlimentos.add(alimento);
+
+        //comparacion con el alimento mas calorico
         alimentoCalorico(alimento);
     }  
 
@@ -86,7 +92,7 @@ public class Usuario
             float total;
             //total de macronutrientes
             total = this.proteinas + this.carbohidratos +this.grasas;
-            
+
             System.out.println("Nombre:                            " + this.nombre);
             System.out.println("Gramos de proteinas ingeridos:     " + this.proteinas       + " (" + (this.proteinas     / total) + ")" );
             System.out.println("Gramos de carbohidratos ingeridos: " + this.carbohidratos   + " (" + (this.carbohidratos / total) + ")");
@@ -94,7 +100,7 @@ public class Usuario
             System.out.println("Calorias ingeridas:                " + this.calorias);
         }
     }
-    
+
     /**
      * retorna el numero de calorias consumidas
      */
@@ -102,15 +108,15 @@ public class Usuario
     {
         return this.calorias;
     }
-    
+
     /**
      * retorna el nombre del usuario
      */
-       public String getNombre()
+    public String getNombre()
     {
         return this.nombre;
     }
-    
+
     /**
      * compara al usuario con otro y imprime por pantalla un mensaje con quien ha consumido mas calorias
      */
@@ -132,7 +138,7 @@ public class Usuario
         }
         System.out.println(getNombre() + " ha consumido " + compara + " calorias que " + usuario.getNombre());
     }
-    
+
     /**
      * guarda el alimento mas calorico por 100g consumido hasta ahora
      */
@@ -152,7 +158,7 @@ public class Usuario
             this.alimentoCalorico = alimento;
         }
     }
-    
+
     /**
      * imprime que alimmento ha sido el mas calorico por 100g hasta el momento
      */
@@ -160,9 +166,45 @@ public class Usuario
     {
         System.out.print("Alimento más calórico ingerido por el usuario hasta el momento: " + this.alimentoCalorico.getNombre());
     }
-    
-    
-    
 
-    
+    /**
+     * imprime las estadisticas de un alimento introduciendo mediante un entero la posicion en la que se consumio
+     */
+    public void estadisticaAlimentoListado(int posicion)
+    {
+        // le damos a la posicion el valor del indice correspondiente
+        posicion = posicion - 1;
+        // si ya a comido
+        if ( this.listaAlimentos.size() != 0)
+        {
+            //mensaje de error al introducir posicion no valida
+            String error = "ERROR introduzaca un valor valido en el rango [1-" + listaAlimentos.size() + "]";
+           
+            if(posicion < listaAlimentos.size())
+            {
+                //impresion datos del alimento en la posicion indicada
+                if(posicion >= 0)
+                {
+                    this.listaAlimentos.get(posicion).muestraDatos();
+                }
+                //posicion no valida
+                else
+                {
+                    System.out.println(error);
+                }
+            }
+            //posicion no valida
+            else
+            {
+                System.out.println(error);
+            }
+
+        }
+        //todavia no a comido nada
+        else 
+        {
+            System.out.println("Por el momento no se ha comido nada");
+        }
+
+    }
 }
