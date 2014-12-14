@@ -47,6 +47,21 @@ public class Usuario
         
         //calorias ingeridas
         this.calorias = this.calorias + (gramosAlimento * (aliemento.getCalorias100g()/100));      
-    }   
+    }  
+    
+    /**
+     * muestra los datos sobre macronutrientes y calorias ingeridas hasta el momento
+     */
+    public void estadisticas()
+    {
+        System.out.println("Nombre:                            " + this.nombre);
+        System.out.println("Gramos de proteinas ingeridos:     " + this.proteinas);
+        System.out.println("Gramos de carbohidratos ingeridos: " + this.carbohidratos);
+        System.out.println("Grasas por cada 100 gramos:        " + this.grasas);
+        System.out.println("Calorias ingeridas:                " + this.calorias);
+    }
+    
+    
+    
     
 }
