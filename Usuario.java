@@ -34,6 +34,19 @@ public class Usuario
         //calorias antes de empezar a comer
         this.calorias = 0F;
     }
-
+    
+    /**
+     * simula la accion de comer un alimento
+     */
+    public void comer (Alimento aliemento , float gramosAlimento)
+    {
+        //macronutrientes ingeridos
+        this.proteinas     = this.proteinas     + (gramosAlimento * (aliemento.getProteinas()     / 100));
+        this.carbohidratos = this.carbohidratos + (gramosAlimento * (aliemento.getCarbohidratos() / 100));
+        this.grasas        =  this.grasas       + (gramosAlimento * (aliemento.getGrasas()        / 100));
+        
+        //calorias ingeridas
+        this.calorias = this.calorias + (gramosAlimento * (aliemento.getCalorias100g()/100));      
+    }   
     
 }

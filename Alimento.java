@@ -38,7 +38,7 @@ public class Alimento
         System.out.println("Proteinas por cada 100 gramos:     " + this.proteinas);
         System.out.println("Carbohidratos por cada 100 gramos: " + this.carbohidratos);
         System.out.println("Grasas por cada 100 gramos:        " + this.grasas);
-        System.out.println("Calorias:                          " + calorias100g());
+        System.out.println("Calorias:                          " + getCalorias100g());
         System.out.println("Componente/s mayoritario/s:        " + mayoritario());
 
     }
@@ -47,7 +47,7 @@ public class Alimento
      * retorna calorias en 100g del alimento segun sus macronutrientes
      */
 
-    public float calorias100g()
+    public float getCalorias100g()
     {
         float calorias;
         calorias = 0;
@@ -55,6 +55,30 @@ public class Alimento
         calorias = calorias + (this.carbohidratos * 4);
         calorias = calorias + (this.grasas * 9);
         return calorias;
+    }
+    
+    /**
+     * retorna la cantidad de proteinas por 100 gramos de alimento
+     */
+    public float getProteinas()
+    {
+       return this.proteinas;
+    }
+    
+    /**
+     * retorna la cantidad de carbohidratos por 100 gramos de alimento
+     */
+    public float getCarbohidratos()
+    {
+       return this.carbohidratos;
+    }
+    
+    /**
+     * retorna la cantidad de grasas por 100 gramos de alimento
+     */
+    public float getGrasas()
+    {
+       return this.grasas;
     }
 
     /**
