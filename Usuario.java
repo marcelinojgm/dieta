@@ -17,6 +17,7 @@ public class Usuario
 
     //numero de calorias ingeridas
     private float calorias;
+   
 
     /**
      * Constructor for objects of class Usuario
@@ -86,6 +87,44 @@ public class Usuario
             System.out.println("Calorias ingeridas:                " + this.calorias);
         }
     }
+    
+    /**
+     * retorna el numero de calorias consumidas
+     */
+    public float calorias()
+    {
+        return this.calorias;
+    }
+    /**
+     * retorna el nombre del usuario
+     */
+       public String nombre()
+    {
+        return this.nombre;
+    }
+    
+    /**
+     * compara al usuario con otro y imprime por pantalla un mensaje con quien ha consumido mas calorias
+     */
+    public void compara(Usuario usuario)
+    {
+        String compara;
+        compara = "";
+        if(this.calorias > usuario.calorias())
+        {
+            compara = "mas";
+        }
+        else if (this.calorias < usuario.calorias())
+        {
+            compara = "menos";
+        }
+        else
+        {
+            compara = "las mismas";
+        }
+        System.out.println(nombre() + " ha consumido " + compara + " calorias que " + usuario.nombre());
+    }
+    
 
     
 }
