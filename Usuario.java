@@ -43,15 +43,17 @@ public class Usuario
     /**
      * simula la accion de comer un alimento
      */
-    public void comer (Alimento aliemento , float gramosAlimento)
+    public void comer (Alimento alimento , float gramosAlimento)
     {
         //macronutrientes ingeridos
-        this.proteinas     = this.proteinas     + (gramosAlimento * (aliemento.getProteinas()     / 100));
-        this.carbohidratos = this.carbohidratos + (gramosAlimento * (aliemento.getCarbohidratos() / 100));
-        this.grasas        =  this.grasas       + (gramosAlimento * (aliemento.getGrasas()        / 100));
+        this.proteinas     = this.proteinas     + (gramosAlimento * (alimento.getProteinas()     / 100));
+        this.carbohidratos = this.carbohidratos + (gramosAlimento * (alimento.getCarbohidratos() / 100));
+        this.grasas        =  this.grasas       + (gramosAlimento * (alimento.getGrasas()        / 100));
 
         //calorias ingeridas
-        this.calorias = this.calorias + (gramosAlimento * (aliemento.getCalorias100g()/100));      
+        this.calorias = this.calorias + (gramosAlimento * (alimento.getCalorias100g()/100));
+        
+        alimentoCalorico(alimento);
     }  
 
     /**
