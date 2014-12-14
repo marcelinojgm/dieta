@@ -14,10 +14,9 @@ public class Usuario
     private float proteinas;
     private float carbohidratos;
     private float grasas;
-    
+
     //numero de calorias ingeridas
     private float calorias;
-  
 
     /**
      * Constructor for objects of class Usuario
@@ -30,11 +29,11 @@ public class Usuario
         this.proteinas     = 0F;
         this.carbohidratos = 0F;
         this.grasas        = 0F;
-        
+
         //calorias antes de empezar a comer
         this.calorias = 0F;
     }
-    
+
     /**
      * simula la accion de comer un alimento
      */
@@ -44,11 +43,11 @@ public class Usuario
         this.proteinas     = this.proteinas     + (gramosAlimento * (aliemento.getProteinas()     / 100));
         this.carbohidratos = this.carbohidratos + (gramosAlimento * (aliemento.getCarbohidratos() / 100));
         this.grasas        =  this.grasas       + (gramosAlimento * (aliemento.getGrasas()        / 100));
-        
+
         //calorias ingeridas
         this.calorias = this.calorias + (gramosAlimento * (aliemento.getCalorias100g()/100));      
     }  
-    
+
     /**
      * muestra los datos sobre macronutrientes y calorias ingeridas hasta el momento
      */
@@ -60,8 +59,33 @@ public class Usuario
         System.out.println("Grasas por cada 100 gramos:        " + this.grasas);
         System.out.println("Calorias ingeridas:                " + this.calorias);
     }
-    
-    
-    
+
+    /**
+     * muestra los datos sobre macronutrientes y calorias ingeridas hasta el momento en porcentajes
+     */
+    public void estadisticasPorecentaje()
+    {
+        if(this.calorias == 0)
+        {
+            System.out.println("Nombre:                            " + this.nombre);
+            System.out.println("Gramos de proteinas ingeridos:     " + this.proteinas);
+            System.out.println("Gramos de carbohidratos ingeridos: " + this.carbohidratos);
+            System.out.println("Grasas por cada 100 gramos:        " + this.grasas);
+            System.out.println("Calorias ingeridas:                " + this.calorias);
+        }
+        else
+        {
+            float total;
+            //total de macronutrientes
+            total = this.proteinas + this.carbohidratos +this.grasas;
+            
+            System.out.println("Nombre:                            " + this.nombre);
+            System.out.println("Gramos de proteinas ingeridos:     " + this.proteinas       + " (" + (this.proteinas     / total) + ")" );
+            System.out.println("Gramos de carbohidratos ingeridos: " + this.carbohidratos   + " (" + (this.carbohidratos / total) + ")");
+            System.out.println("Grasas por cada 100 gramos:        " + this.grasas          + " (" + (this.grasas        / total) + ")");
+            System.out.println("Calorias ingeridas:                " + this.calorias);
+        }
+    }
+
     
 }
